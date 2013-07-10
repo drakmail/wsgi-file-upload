@@ -16,7 +16,7 @@ class FileUploadApp(object):
             )
             fileitem = post["userfile"]
             if fileitem.file:
-                filename = fileitem.filename.decode('utf8').replace('\\','/').split('/')[-1].strip()
+                filename = fileitem.filename.replace('\\','/').split('/')[-1].strip()
                 if not filename:
                     raise Exception('No valid filename specified')
                 file_path = os.path.join(self.root, filename)
@@ -68,12 +68,12 @@ File: <input type="file" name="userfile" />
 
 def main():
     if len(sys.argv) != 3:
-        print "Usage: python upload.py 8082 /tmp/upload"
+        print("Usage: python upload.py 8082 /tmp/upload")
         sys.exit(1)
     PORT = int(sys.argv[1])
     ROOT = sys.argv[2]
     httpd = make_server('', PORT, FileUploadApp(ROOT))
-    print "Serving HTTP on port %s..."%(PORT)
+    print("Serving HTTP on port %s..."%(PORT))
     # Respond to requests until process is killed
     httpd.serve_forever()
 
