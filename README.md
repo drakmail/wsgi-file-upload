@@ -1,6 +1,6 @@
 # wsgi-file-upload
 
-Simple Python WSGI application to let you upload files
+Simple Python3-compatible  WSGI application to let you upload files
 
 ## License
 
